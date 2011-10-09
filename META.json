@@ -1,0 +1,59 @@
+{
+   "abstract" : "Apply iTunes-like metadata to an mp4 file.",
+   "author" : [
+      "Andrew Jones <andrew@arjones.co.uk>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "App-MP4Meta",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.30"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "App::Cmd::Setup" : 0,
+            "AtomicParsley::Command" : 0,
+            "AtomicParsley::Command::Tags" : 0,
+            "File::Copy" : 0,
+            "File::Spec" : 0,
+            "File::Temp" : 0,
+            "IMDB::Film" : 0,
+            "LWP::Simple" : 0,
+            "perl" : "5.010",
+            "strict" : 0,
+            "warnings" : 0
+         }
+      },
+      "test" : {
+         "requires" : {
+            "App::Cmd::Tester" : 0,
+            "English" : 0,
+            "Test::More" : 0
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/andrewrjones/perl5-App-MP4Meta/issues"
+      },
+      "homepage" : "https://github.com/andrewrjones/perl5-App-MP4Meta",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/andrewrjones/perl5-App-MP4Meta.git",
+         "web" : "https://github.com/andrewrjones/perl5-App-MP4Meta"
+      }
+   },
+   "version" : "1.112820"
+}
+
