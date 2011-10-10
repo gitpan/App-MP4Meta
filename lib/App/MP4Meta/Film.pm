@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Film;
 {
-  $App::MP4Meta::Film::VERSION = '1.112820';
+  $App::MP4Meta::Film::VERSION = '1.112830';
 }
 
 # ABSTRACT: Add metadata to a film
@@ -55,6 +55,10 @@ sub apply_meta {
     );
 
     my $tempfile = $self->{ap}->write_tags( $path, $tags, !$self->{noreplace} );
+
+    if ( !$self->{ap}->{success} ) {
+        return $self->{ap}->{'stdout_buf'}[0];
+    }
 
     if ( !$tempfile ) {
         return "Error writing to file";
@@ -131,7 +135,7 @@ App::MP4Meta::Film - Add metadata to a film
 
 =head1 VERSION
 
-version 1.112820
+version 1.112830
 
 =head1 SYNOPSIS
 
