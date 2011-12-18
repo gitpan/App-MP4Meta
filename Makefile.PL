@@ -32,14 +32,15 @@ my %WriteMakefileArgs = (
     "File::Copy" => 0,
     "File::Spec" => 0,
     "File::Temp" => 0,
+    "HTML::TreeBuilder::XPath" => 0,
     "IMDB::Film" => 0,
-    "LWP::Simple" => 0,
+    "LWP::UserAgent" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.112830",
+  "VERSION" => "1.113520",
   "test" => {
-    "TESTS" => "t/*.t t/film/*.t"
+    "TESTS" => "t/*.t t/film/*.t t/musicvideo/*.t t/tv/*.t"
   }
 );
 

@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Film;
 {
-  $App::MP4Meta::Film::VERSION = '1.112830';
+  $App::MP4Meta::Film::VERSION = '1.113520';
 }
 
 # ABSTRACT: Add metadata to a film
@@ -12,14 +12,7 @@ package App::MP4Meta::Film;
 use App::MP4Meta::Base;
 our @ISA = 'App::MP4Meta::Base';
 
-use IMDB::Film '0.50';
-
-use LWP::Simple '5.835';
 use File::Spec '3.33';
-use File::Temp '0.22', ();
-use File::Copy;
-
-use AtomicParsley::Command;
 use AtomicParsley::Command::Tags;
 
 sub apply_meta {
@@ -54,16 +47,7 @@ sub apply_meta {
         artwork     => $cover_file
     );
 
-    my $tempfile = $self->{ap}->write_tags( $path, $tags, !$self->{noreplace} );
-
-    if ( !$self->{ap}->{success} ) {
-        return $self->{ap}->{'stdout_buf'}[0];
-    }
-
-    if ( !$tempfile ) {
-        return "Error writing to file";
-    }
-    return;
+    return $self->_write_tags( $path, $tags );
 }
 
 # Parse the filename in order to get the film title. Returns the title.
@@ -80,47 +64,7 @@ sub _parse_filename {
         chop $file;
     }
 
-    # make space
-    $file =~ s/(-|_)/ /g;
-
-    return ( $file, $year );
-}
-
-# Make a query to imdb and get the film data.
-# Returns undef if we couldn't find the film.
-# Returns an IMDB::Film object.
-sub _query_imdb {
-    my ( $self, $title, $year ) = @_;
-
-    my $imdb = IMDB::Film->new( crit => $title, year => $year );
-
-    if ( $imdb->status ) {
-        return $imdb;
-    }
-    return;
-}
-
-# Gets the cover image and stores in a tmp file
-sub _get_cover_image {
-    my ( $self, $cover_url ) = @_;
-
-    if ( $cover_url =~ m/\.(jpg|png)$/ ) {
-        my $tmp = File::Temp->new( UNLINK => 0, SUFFIX => ".$1" );
-
-        # save the tmp file for later
-        push @{ $self->{tmp_files} }, $tmp->filename;
-
-        # get the cover image
-        getstore( $cover_url, $tmp->filename );
-
-        # return cover file
-        return $tmp->filename;
-    }
-    else {
-
-        # can't use cover
-        return;
-    }
+    return ( $self->_clean_title($file), $year );
 }
 
 1;
@@ -135,7 +79,7 @@ App::MP4Meta::Film - Add metadata to a film
 
 =head1 VERSION
 
-version 1.112830
+version 1.113520
 
 =head1 SYNOPSIS
 

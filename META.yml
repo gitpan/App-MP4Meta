@@ -22,8 +22,9 @@ requires:
   File::Copy: 0
   File::Spec: 0
   File::Temp: 0
+  HTML::TreeBuilder::XPath: 0
   IMDB::Film: 0
-  LWP::Simple: 0
+  LWP::UserAgent: 0
   perl: 5.010
   strict: 0
   warnings: 0
@@ -31,4 +32,4 @@ resources:
   bugtracker: https://github.com/andrewrjones/perl5-App-MP4Meta/issues
   homepage: https://github.com/andrewrjones/perl5-App-MP4Meta
   repository: https://github.com/andrewrjones/perl5-App-MP4Meta.git
-version: 1.112830
+version: 1.113520
