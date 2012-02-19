@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Film;
 {
-  $App::MP4Meta::Film::VERSION = '1.113520';
+  $App::MP4Meta::Film::VERSION = '1.120500';
 }
 
 # ABSTRACT: Add metadata to a film
@@ -79,7 +79,7 @@ App::MP4Meta::Film - Add metadata to a film
 
 =head1 VERSION
 
-version 1.113520
+version 1.120500
 
 =head1 SYNOPSIS
 

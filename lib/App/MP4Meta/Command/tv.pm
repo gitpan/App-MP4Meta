@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Command::tv;
 {
-  $App::MP4Meta::Command::tv::VERSION = '1.113520';
+  $App::MP4Meta::Command::tv::VERSION = '1.120500';
 }
 
 # ABSTRACT: Apply metadata to a TV Series. Parses the filename in order to get the shows title and its season and episode number.
@@ -24,6 +24,9 @@ sub opt_spec {
         [ "coverfile=s", "The location of the cover image" ],
         [ "title=s",     "The title of the TV Show" ],
         [ "noreplace", "Don't replace the file - creates a temp file instead" ],
+        [
+            "withoutimdb", "Continue to process even if we can not find on IMDB"
+        ],
     );
 }
 
@@ -52,10 +55,11 @@ sub execute {
     require App::MP4Meta::TV;
     my $tv = App::MP4Meta::TV->new(
         {
-            noreplace => $opt->{noreplace},
-            genre     => $opt->{genre},
-            title     => $opt->{title},
-            coverfile => $opt->{coverfile},
+            noreplace    => $opt->{noreplace},
+            genre        => $opt->{genre},
+            title        => $opt->{title},
+            coverfile    => $opt->{coverfile},
+            without_imdb => $opt->{withoutimdb},
         }
     );
 
@@ -76,7 +80,7 @@ App::MP4Meta::Command::tv - Apply metadata to a TV Series. Parses the filename i
 
 =head1 VERSION
 
-version 1.113520
+version 1.120500
 
 =head1 SYNOPSIS
 
@@ -87,6 +91,8 @@ version 1.113520
 This command applies metadata to one or more TV Series. It parses the filename in order to get the shows title and its season and episode number.
 
 It gets the TV Series metadata by querying the IMDB. It then uses AtomicParsley to apply the metadata to the file.
+
+If it can not find the TV Series on the IMDB, by default it will not apply any metadata. If you wan't it to apply what it can, pass the C<--withoutimdb> option.
 
 By default, it will apply the metadata to the existing file. If you want it to write to a temporary file and leave the existing file untouched, provide the C<--noreplace> option.
 

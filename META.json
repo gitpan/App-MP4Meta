@@ -4,7 +4,7 @@
       "Andrew Jones <andrew@arjones.co.uk>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640",
    "license" : [
       "perl_5"
    ],
@@ -39,7 +39,7 @@
          "requires" : {
             "App::Cmd::Tester" : 0,
             "English" : 0,
-            "Test::More" : 0
+            "Test::More" : "0.88"
          }
       }
    },
@@ -55,6 +55,6 @@
          "web" : "https://github.com/andrewrjones/perl5-App-MP4Meta"
       }
    },
-   "version" : "1.113520"
+   "version" : "1.120500"
 }
 

@@ -14,7 +14,7 @@ my %WriteMakefileArgs = (
   "BUILD_REQUIRES" => {
     "App::Cmd::Tester" => 0,
     "English" => 0,
-    "Test::More" => 0
+    "Test::More" => "0.88"
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -38,7 +38,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.113520",
+  "VERSION" => "1.120500",
   "test" => {
     "TESTS" => "t/*.t t/film/*.t t/musicvideo/*.t t/tv/*.t"
   }

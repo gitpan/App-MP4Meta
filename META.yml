@@ -5,11 +5,11 @@ author:
 build_requires:
   App::Cmd::Tester: 0
   English: 0
-  Test::More: 0
+  Test::More: 0.88
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150'
+generated_by: 'Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -32,4 +32,4 @@ resources:
   bugtracker: https://github.com/andrewrjones/perl5-App-MP4Meta/issues
   homepage: https://github.com/andrewrjones/perl5-App-MP4Meta
   repository: https://github.com/andrewrjones/perl5-App-MP4Meta.git
-version: 1.113520
+version: 1.120500

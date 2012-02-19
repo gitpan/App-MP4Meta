@@ -23,8 +23,8 @@ t/film/05_lib.t
 t/film/10_app.t
 t/musicvideo/05_lib.t
 t/musicvideo/10_app.t
-t/release-eol.t
 t/release-kwalitee.t
+t/release-no-smart-comments.t
 t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-no404s.t
