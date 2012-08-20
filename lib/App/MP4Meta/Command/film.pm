@@ -4,12 +4,14 @@ use warnings;
 
 package App::MP4Meta::Command::film;
 {
-  $App::MP4Meta::Command::film::VERSION = '1.120500';
+  $App::MP4Meta::Command::film::VERSION = '1.122330';
 }
 
 # ABSTRACT: Apply metadata to a film. Parses the filename in order to get the films title and (optionally) year.
 
 use App::MP4Meta -command;
+
+use Try::Tiny;
 
 
 sub usage_desc { "film %o [file ...]" }
@@ -20,7 +22,16 @@ sub abstract {
 
 sub opt_spec {
     return (
+        [ "genre=s",     "The genre of the TV Show" ],
+        [ "coverfile=s", "The location of the cover image" ],
+        [ "sources=s@", "The sources to search", { default => [qw/IMDB/] } ],
+        [ "title=s",    "The title of the Film" ],
         [ "noreplace", "Don't replace the file - creates a temp file instead" ],
+        [ "verbose",   "Print verbosely" ],
+        [
+            "withoutany",
+"Continue to process even if we can not find any information on the internet"
+        ],
     );
 }
 
@@ -47,12 +58,33 @@ sub execute {
     my ( $self, $opt, $args ) = @_;
 
     require App::MP4Meta::Film;
-    my $film = App::MP4Meta::Film->new( { noreplace => $opt->{noreplace}, } );
+    my $film = App::MP4Meta::Film->new(
+        {
+            noreplace            => $opt->{noreplace},
+            genre                => $opt->{genre},
+            sources              => $opt->{sources},
+            title                => $opt->{title},
+            coverfile            => $opt->{coverfile},
+            verbose              => $opt->{verbose},
+            continue_without_any => $opt->{withoutany},
+        }
+    );
 
     for my $file (@$args) {
-        my $error = $film->apply_meta($file);
-        say $error if $error;
+        say "processing $file" if $opt->{verbose};
+        my $error;
+        try {
+            $error = $film->apply_meta($file);
+        }
+        catch {
+            $error = "Error applying meta to $file: $_";
+        }
+        finally {
+            say $error if $error;
+        };
     }
+
+    say 'done' if $opt->{verbose};
 }
 
 1;
@@ -66,7 +98,7 @@ App::MP4Meta::Command::film - Apply metadata to a film. Parses the filename in o
 
 =head1 VERSION
 
-version 1.120500
+version 1.122330
 
 =head1 SYNOPSIS
 
@@ -86,7 +118,7 @@ Andrew Jones <andrew@arjones.co.uk>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Andrew Jones.
+This software is copyright (c) 2012 by Andrew Jones.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

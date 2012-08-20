@@ -4,16 +4,13 @@ use warnings;
 
 package App::MP4Meta::Base;
 {
-  $App::MP4Meta::Base::VERSION = '1.120500';
+  $App::MP4Meta::Base::VERSION = '1.122330';
 }
 
 # ABSTRACT: Base class. Contains common functionality.
 
-use File::Temp '0.22', ();
-use File::Copy;
-use IMDB::Film '0.50';
-require LWP::UserAgent;
-
+use Module::Load ();
+use Try::Tiny;
 use AtomicParsley::Command;
 
 sub new {
@@ -24,22 +21,34 @@ sub new {
     # the path to AtomicParsley
     $self->{'ap'} = AtomicParsley::Command->new( { ap => $args->{'ap'} } );
 
-    # LWP::UserAgent
-    $self->{'ua'} = LWP::UserAgent->new;
-
     # if true, replace file
     $self->{'noreplace'} = $args->{'noreplace'};
 
-    # stores tmp files which we clean up later
-    $self->{'tmp_files'} = ();
+    # if true, print verbosely
+    $self->{'verbose'} = $args->{'verbose'};
 
-    # cache for IMDB objects
-    $self->{'imdb_cache'} = {};
+    # internet sources
+    $self->{'sources'} = $args->{'sources'};
 
-    # cache for cover images
-    $self->{'cover_img_cache'} = {};
+    # common attributes for a media file
+    $self->{'genre'}     = $args->{'genre'};
+    $self->{'title'}     = $args->{'title'};
+    $self->{'coverfile'} = $args->{'coverfile'};
 
     bless( $self, $class );
+
+    # create sources now so they are in scope for as long as we are
+    $self->{'sources_objects'} = [];
+    for my $source ( @{ $self->{'sources'} } ) {
+        try {
+            push( @{ $self->{'sources_objects'} },
+                $self->_new_source($source) );
+        }
+        catch {
+            say STDERR "could not load source: $_";
+        };
+    }
+
     return $self;
 }
 
@@ -60,70 +69,6 @@ sub _write_tags {
     return;
 }
 
-# Make a query to imdb
-# Returns undef if we couldn't find the query.
-# Returns an IMDB::Film object.
-sub _query_imdb {
-    my ( $self, $title, $year ) = @_;
-
-    # first, check the cache
-    my $key = $title;
-    $key .= $year if $year;
-    if ( defined $self->{'imdb_cache'}->{$key} ) {
-        return $self->{'imdb_cache'}->{$key};
-    }
-
-    my $imdb = IMDB::Film->new( crit => $title, year => $year );
-
-    if ( $imdb->status ) {
-
-        # cache IMDB object for future queries
-        $self->{'imdb_cache'}->{$key} = $imdb;
-
-        return $imdb;
-    }
-    return;
-}
-
-# Gets the cover image and stores in a tmp file
-sub _get_cover_image {
-    my ( $self, $url ) = @_;
-
-    return unless $url;
-
-    if ( $url =~ m/\.(jpg|png)$/ ) {
-        my $suffix = $1;
-
-        # first, check the cache
-        if ( defined $self->{'cover_img_cache'}->{$url} ) {
-            return $self->{'cover_img_cache'}->{$url};
-        }
-
-        # get the image
-        my $response = $self->{ua}->get($url);
-        if ( !$response->is_success ) {
-            return;
-        }
-
-        # create a temp file
-        my $tmp = $self->_get_tempfile($suffix);
-
-        # write img to temp file
-        binmode $tmp;
-        print $tmp $response->decoded_content;
-
-        # cache temp file for future queries
-        $self->{'cover_img_cache'}->{$url} = $tmp->filename;
-
-        return $tmp->filename;
-    }
-    else {
-
-        # can't use cover
-        return;
-    }
-}
-
 # Converts 'THE_OFFICE' to 'The Office'
 sub _clean_title {
     my ( $self, $title ) = @_;
@@ -136,27 +81,12 @@ sub _clean_title {
     return $title;
 }
 
-# Returns a File::Temp object
-sub _get_tempfile {
-    my ( $self, $suffix ) = @_;
-
-    $suffix = $suffix // 'tmp';
-
-    my $tmp = File::Temp->new( UNLINK => 0, SUFFIX => ".$suffix" );
-
-    # save the tmp file for later
-    push @{ $self->{tmp_files} }, $tmp->filename;
-
-    return $tmp;
-}
-
-sub DESTROY {
-    my $self = shift;
-
-    # remove all tmp files
-    for my $f ( @{ $self->{tmp_files} } ) {
-        unlink $f;
-    }
+# load a module as a new source
+sub _new_source {
+    my ( $self, $source ) = @_;
+    my $module = 'App::MP4Meta::Source::' . $source;
+    Module::Load::load($module);
+    return $module->new;
 }
 
 1;
@@ -171,12 +101,11 @@ App::MP4Meta::Base - Base class. Contains common functionality.
 
 =head1 VERSION
 
-version 1.120500
+version 1.122330
 
 =head1 SYNOPSIS
 
-  my $film = App::MP4Meta::Base->new( ap => 'path/to/ap' );
-  $film->apply_meta( '/path/to/The_Truman_Show.m4v' );
+  my $base = App::MP4Meta::Base->new( ap => 'path/to/ap' );
 
 =head1 METHODS
 
@@ -194,6 +123,26 @@ ap - Path to the AtomicParsley command. Optional.
 
 noreplace - If true, do not replace file, but save to temp instead
 
+=item *
+
+verbose - If true, print verbosely
+
+=item *
+
+sources - A list of sources to load
+
+=item *
+
+genre - Define a genre for the media file
+
+=item *
+
+title - Define a title for the media file
+
+=item *
+
+coverfile - Define the path to a coverfile for the media file
+
 =back
 
 =head1 AUTHOR
@@ -202,7 +151,7 @@ Andrew Jones <andrew@arjones.co.uk>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Andrew Jones.
+This software is copyright (c) 2012 by Andrew Jones.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,17 +1,20 @@
+use 5.010;
 use strict;
 use warnings;
 
 package App::MP4Meta;
 {
-  $App::MP4Meta::VERSION = '1.120500';
+  $App::MP4Meta::VERSION = '1.122330';
 }
 
 # ABSTRACT: Apply iTunes-like metadata to an mp4 file.
 
 use App::Cmd::Setup -app;
 
+1;
 
-__END__
+
+
 =pod
 
 =head1 NAME
@@ -20,7 +23,7 @@ App::MP4Meta - Apply iTunes-like metadata to an mp4 file.
 
 =head1 VERSION
 
-version 1.120500
+version 1.122330
 
 =head1 DESCRIPTION
 
@@ -32,13 +35,11 @@ The C<film> command parses the filename and searches the IMDB for film metadata.
 
 =head2 tv
 
-The C<tv> command parses the filename and searches the IMDB for TV Series metadata. See L<App::MP4Meta::Command::tv> for more information.
+The C<tv> command parses the filename and searches the TVDB and the IMDB for TV Series metadata. See L<App::MP4Meta::Command::tv> for more information.
 
 =head2 musicvideo
 
 The C<film> command parses the filename in order to get the videos artist and song title. See L<App::MP4Meta::Command::musicvideo> for more information.
-
-1;
 
 =head1 AUTHOR
 
@@ -46,10 +47,13 @@ Andrew Jones <andrew@arjones.co.uk>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Andrew Jones.
+This software is copyright (c) 2012 by Andrew Jones.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
 

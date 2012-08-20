@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::MusicVideo;
 {
-  $App::MP4Meta::MusicVideo::VERSION = '1.120500';
+  $App::MP4Meta::MusicVideo::VERSION = '1.122330';
 }
 
 # ABSTRACT: Add metadata to a music video
@@ -21,10 +21,6 @@ sub new {
 
     my $self = $class->SUPER::new($args);
 
-    $self->{'genre'}     = $args->{'genre'};
-    $self->{'title'}     = $args->{'title'};
-    $self->{'coverfile'} = $args->{'coverfile'};
-
     $self->{'media_type'} = 'Music Video';
 
     return $self;
@@ -38,6 +34,8 @@ sub apply_meta {
 
     # parse the filename for the film title and optional year
     my ( $artist, $title ) = $self->_parse_filename($file);
+
+    # TODO: check we have a title and artist
 
     my $tags = AtomicParsley::Command::Tags->new(
         artist      => $artist,
@@ -77,7 +75,7 @@ App::MP4Meta::MusicVideo - Add metadata to a music video
 
 =head1 VERSION
 
-version 1.120500
+version 1.122330
 
 =head1 SYNOPSIS
 
@@ -98,7 +96,7 @@ Andrew Jones <andrew@arjones.co.uk>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Andrew Jones.
+This software is copyright (c) 2012 by Andrew Jones.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -14,7 +14,16 @@ my %WriteMakefileArgs = (
   "BUILD_REQUIRES" => {
     "App::Cmd::Tester" => 0,
     "English" => 0,
-    "Test::More" => "0.88"
+    "File::Copy" => 0,
+    "File::Find" => 0,
+    "FindBin" => 0,
+    "Net::Ping" => 0,
+    "Test::Class" => 0,
+    "Test::Exception" => 0,
+    "Test::MockObject" => 0,
+    "Test::More" => "0.88",
+    "WebService::TVDB::Series" => 0,
+    "base" => 0
   },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -29,18 +38,21 @@ my %WriteMakefileArgs = (
     "App::Cmd::Setup" => 0,
     "AtomicParsley::Command" => 0,
     "AtomicParsley::Command::Tags" => 0,
-    "File::Copy" => 0,
     "File::Spec" => 0,
     "File::Temp" => 0,
-    "HTML::TreeBuilder::XPath" => 0,
-    "IMDB::Film" => 0,
-    "LWP::UserAgent" => 0,
+    "IMDB::Film" => "0.52",
+    "LWP::Simple" => 0,
+    "Module::Load" => 0,
+    "Object::Tiny" => 0,
+    "Try::Tiny" => 0,
+    "WebService::TVDB" => 0,
+    "constant" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.120500",
+  "VERSION" => "1.122330",
   "test" => {
-    "TESTS" => "t/*.t t/film/*.t t/musicvideo/*.t t/tv/*.t"
+    "TESTS" => "t/*.t"
   }
 );
 

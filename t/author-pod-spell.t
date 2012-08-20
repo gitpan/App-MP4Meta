@@ -35,8 +35,13 @@ MP4Meta
 Film
 Command
 tv
-film
 MusicVideo
-musicvideo
-Base
 TV
+Source
+Base
+Data
+TVEpisode
+IMDB
+film
+TVDB
+musicvideo
