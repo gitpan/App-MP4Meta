@@ -31,7 +31,7 @@
             "Module::Load" : 0,
             "Object::Tiny" : 0,
             "Try::Tiny" : 0,
-            "WebService::TVDB" : 0,
+            "WebService::TVDB" : "1.122800",
             "constant" : 0,
             "perl" : "5.010",
             "strict" : 0,
@@ -67,6 +67,6 @@
          "web" : "https://github.com/andrewrjones/perl5-App-MP4Meta"
       }
    },
-   "version" : "1.122330"
+   "version" : "1.122800"
 }
 

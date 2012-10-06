@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta;
 {
-  $App::MP4Meta::VERSION = '1.122330';
+  $App::MP4Meta::VERSION = '1.122800';
 }
 
 # ABSTRACT: Apply iTunes-like metadata to an mp4 file.
@@ -23,7 +23,7 @@ App::MP4Meta - Apply iTunes-like metadata to an mp4 file.
 
 =head1 VERSION
 
-version 1.122330
+version 1.122800
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,7 @@ The C<tv> command parses the filename and searches the TVDB and the IMDB for TV 
 
 =head2 musicvideo
 
-The C<film> command parses the filename in order to get the videos artist and song title. See L<App::MP4Meta::Command::musicvideo> for more information.
+The C<musicvideo> command parses the filename in order to get the videos artist and song title. See L<App::MP4Meta::Command::musicvideo> for more information.
 
 =head1 AUTHOR
 

@@ -45,12 +45,12 @@ my %WriteMakefileArgs = (
     "Module::Load" => 0,
     "Object::Tiny" => 0,
     "Try::Tiny" => 0,
-    "WebService::TVDB" => 0,
+    "WebService::TVDB" => "1.122800",
     "constant" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.122330",
+  "VERSION" => "1.122800",
   "test" => {
     "TESTS" => "t/*.t"
   }

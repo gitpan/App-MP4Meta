@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::MusicVideo;
 {
-  $App::MP4Meta::MusicVideo::VERSION = '1.122330';
+  $App::MP4Meta::MusicVideo::VERSION = '1.122800';
 }
 
 # ABSTRACT: Add metadata to a music video
@@ -75,7 +75,7 @@ App::MP4Meta::MusicVideo - Add metadata to a music video
 
 =head1 VERSION
 
-version 1.122330
+version 1.122800
 
 =head1 SYNOPSIS
 

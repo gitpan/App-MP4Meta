@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Command::film;
 {
-  $App::MP4Meta::Command::film::VERSION = '1.122330';
+  $App::MP4Meta::Command::film::VERSION = '1.122800';
 }
 
 # ABSTRACT: Apply metadata to a film. Parses the filename in order to get the films title and (optionally) year.
@@ -98,7 +98,7 @@ App::MP4Meta::Command::film - Apply metadata to a film. Parses the filename in o
 
 =head1 VERSION
 
-version 1.122330
+version 1.122800
 
 =head1 SYNOPSIS
 

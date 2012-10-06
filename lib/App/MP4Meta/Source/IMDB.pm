@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Source::IMDB;
 {
-  $App::MP4Meta::Source::IMDB::VERSION = '1.122330';
+  $App::MP4Meta::Source::IMDB::VERSION = '1.122800';
 }
 
 # ABSTRACT: Contains data for a TV Episode.
@@ -100,7 +100,7 @@ sub get_tv_episode {
 sub _search_imdb {
     my ( $self, $title, $year ) = @_;
 
-    my $imdb = IMDB::Film->new( crit => $title, year => $year );
+    my $imdb = IMDB::Film->new( crit => $title, year => $year, cache => 1 );
     die 'no series found' unless $imdb->status;
 
     return $imdb;
@@ -151,7 +151,7 @@ App::MP4Meta::Source::IMDB - Contains data for a TV Episode.
 
 =head1 VERSION
 
-version 1.122330
+version 1.122800
 
 =head1 METHODS
 

@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Source::TVDB;
 {
-  $App::MP4Meta::Source::TVDB::VERSION = '1.122330';
+  $App::MP4Meta::Source::TVDB::VERSION = '1.122800';
 }
 
 # ABSTRACT: Searches http://thetvbd.com for TV data.
@@ -14,7 +14,7 @@ our @ISA = 'App::MP4Meta::Source::Base';
 
 use App::MP4Meta::Source::Data::TVEpisode;
 
-use WebService::TVDB;
+use WebService::TVDB 1.122800;
 use File::Temp  ();
 use LWP::Simple ();
 
@@ -119,7 +119,7 @@ App::MP4Meta::Source::TVDB - Searches http://thetvbd.com for TV data.
 
 =head1 VERSION
 
-version 1.122330
+version 1.122800
 
 =head1 METHODS
 
