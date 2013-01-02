@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Film;
 {
-  $App::MP4Meta::Film::VERSION = '1.122800';
+  $App::MP4Meta::Film::VERSION = '1.130020';
 }
 
 # ABSTRACT: Add metadata to a film
@@ -126,7 +126,7 @@ App::MP4Meta::Film - Add metadata to a film
 
 =head1 VERSION
 
-version 1.122800
+version 1.130020
 
 =head1 SYNOPSIS
 
@@ -147,7 +147,7 @@ Andrew Jones <andrew@arjones.co.uk>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Andrew Jones.
+This software is copyright (c) 2013 by Andrew Jones.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

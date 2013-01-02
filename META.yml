@@ -30,11 +30,11 @@ requires:
   AtomicParsley::Command::Tags: 0
   File::Spec: 0
   File::Temp: 0
-  IMDB::Film: 0.52
   LWP::Simple: 0
   Module::Load: 0
   Object::Tiny: 0
   Try::Tiny: 0
+  WebService::IMDBAPI: 0
   WebService::TVDB: 1.122800
   constant: 0
   perl: 5.010
@@ -44,4 +44,4 @@ resources:
   bugtracker: https://github.com/andrewrjones/perl5-App-MP4Meta/issues
   homepage: https://github.com/andrewrjones/perl5-App-MP4Meta
   repository: https://github.com/andrewrjones/perl5-App-MP4Meta.git
-version: 1.122800
+version: 1.130020

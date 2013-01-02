@@ -40,17 +40,17 @@ my %WriteMakefileArgs = (
     "AtomicParsley::Command::Tags" => 0,
     "File::Spec" => 0,
     "File::Temp" => 0,
-    "IMDB::Film" => "0.52",
     "LWP::Simple" => 0,
     "Module::Load" => 0,
     "Object::Tiny" => 0,
     "Try::Tiny" => 0,
+    "WebService::IMDBAPI" => 0,
     "WebService::TVDB" => "1.122800",
     "constant" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.122800",
+  "VERSION" => "1.130020",
   "test" => {
     "TESTS" => "t/*.t"
   }

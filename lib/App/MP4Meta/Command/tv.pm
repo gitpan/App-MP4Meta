@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Command::tv;
 {
-  $App::MP4Meta::Command::tv::VERSION = '1.122800';
+  $App::MP4Meta::Command::tv::VERSION = '1.130020';
 }
 
 # ABSTRACT: Apply metadata to a TV Series. Parses the filename in order to get the shows title and its season and episode number.
@@ -12,8 +12,6 @@ package App::MP4Meta::Command::tv;
 use App::MP4Meta -command;
 
 use Try::Tiny;
-
-#use Term::ProgressBar::Simple;
 
 
 sub usage_desc { "tv %o [file ...]" }
@@ -26,11 +24,7 @@ sub opt_spec {
     return (
         [ "genre=s",     "The genre of the TV Show" ],
         [ "coverfile=s", "The location of the cover image" ],
-        [
-            "sources=s@",
-            "The sources to search",
-            { default => [qw/TVDB IMDB/] }
-        ],
+        [ "sources=s@", "The sources to search", { default => [qw/TVDB/] } ],
         [ "title=s",   "The title of the TV Show" ],
         [ "series=s",  "The series number" ],
         [ "episode=s", "The episode number" ],
@@ -110,7 +104,7 @@ App::MP4Meta::Command::tv - Apply metadata to a TV Series. Parses the filename i
 
 =head1 VERSION
 
-version 1.122800
+version 1.130020
 
 =head1 SYNOPSIS
 
@@ -140,7 +134,7 @@ Andrew Jones <andrew@arjones.co.uk>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Andrew Jones.
+This software is copyright (c) 2013 by Andrew Jones.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
