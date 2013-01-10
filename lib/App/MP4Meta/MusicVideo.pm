@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::MusicVideo;
 {
-  $App::MP4Meta::MusicVideo::VERSION = '1.130020';
+  $App::MP4Meta::MusicVideo::VERSION = '1.130100';
 }
 
 # ABSTRACT: Add metadata to a music video
@@ -46,7 +46,10 @@ sub apply_meta {
         artwork     => $self->{'coverfile'}
     );
 
-    return $self->_write_tags( $path, $tags );
+    my $error = $self->_write_tags( $path, $tags );
+    return $error if $error;
+
+    return $self->_add_to_itunes( File::Spec->rel2abs($path) );
 }
 
 # Parse the filename and returns the videos artist and title.
@@ -75,7 +78,7 @@ App::MP4Meta::MusicVideo - Add metadata to a music video
 
 =head1 VERSION
 
-version 1.130020
+version 1.130100
 
 =head1 SYNOPSIS
 

@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Base;
 {
-  $App::MP4Meta::Base::VERSION = '1.130020';
+  $App::MP4Meta::Base::VERSION = '1.130100';
 }
 
 # ABSTRACT: Base class. Contains common functionality.
@@ -23,6 +23,9 @@ sub new {
 
     # if true, replace file
     $self->{'noreplace'} = $args->{'noreplace'};
+
+    # if true, add to itunes
+    $self->{'itunes'} = $args->{'itunes'};
 
     # if true, print verbosely
     $self->{'verbose'} = $args->{'verbose'};
@@ -81,6 +84,35 @@ sub _clean_title {
     return $title;
 }
 
+# adds file to itunes
+sub _add_to_itunes {
+    my ( $self, $path ) = @_;
+
+    return unless $self->{'itunes'};
+
+    unless ( $^O eq 'darwin' ) {
+        say STDERR 'can only add to iTunes on Mac OSX';
+        return 1;
+    }
+
+    $path =~ s!/!:!g;
+
+    my $cmd = sprintf(
+"osascript -e 'tell application \"iTunes\" to add file \"%s\" to playlist \"Library\" of source \"Library\"'",
+        $path );
+
+    my $result = `$cmd`;
+    if ($?) {
+        say STDERR "error adding to iTunes: $result";
+        return 1;
+    }
+    if ( $self->{'verbose'} and $result ) {
+        say $result;
+    }
+
+    return;
+}
+
 # load a module as a new source
 sub _new_source {
     my ( $self, $source ) = @_;
@@ -101,7 +133,7 @@ App::MP4Meta::Base - Base class. Contains common functionality.
 
 =head1 VERSION
 
-version 1.130020
+version 1.130100
 
 =head1 SYNOPSIS
 

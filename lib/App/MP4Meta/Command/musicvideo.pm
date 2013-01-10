@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Command::musicvideo;
 {
-  $App::MP4Meta::Command::musicvideo::VERSION = '1.130020';
+  $App::MP4Meta::Command::musicvideo::VERSION = '1.130100';
 }
 
 # ABSTRACT: Apply metadata to a music video. Parses the filename in order to get its artist and title.
@@ -26,7 +26,8 @@ sub opt_spec {
         [ "coverfile=s", "The location of the cover image" ],
         [ "title=s",     "The title of the music video" ],
         [ "noreplace", "Don't replace the file - creates a temp file instead" ],
-        [ "verbose",   "Print verbosely" ],
+        [ "itunes",  "adds to iTunes after applying meta data. Mac OSX only." ],
+        [ "verbose", "Print verbosely" ],
     );
 }
 
@@ -59,6 +60,7 @@ sub execute {
             genre     => $opt->{genre},
             title     => $opt->{title},
             coverfile => $opt->{coverfile},
+            itunes    => $opt->{itunes},
             verbose   => $opt->{verbose},
         }
     );
@@ -91,7 +93,7 @@ App::MP4Meta::Command::musicvideo - Apply metadata to a music video. Parses the 
 
 =head1 VERSION
 
-version 1.130020
+version 1.130100
 
 =head1 SYNOPSIS
 

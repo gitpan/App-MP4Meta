@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Film;
 {
-  $App::MP4Meta::Film::VERSION = '1.130020';
+  $App::MP4Meta::Film::VERSION = '1.130100';
 }
 
 # ABSTRACT: Add metadata to a film
@@ -79,7 +79,7 @@ sub apply_meta {
     }
 
     my $apTags = AtomicParsley::Command::Tags->new(
-        title       => $tags{title},
+        title       => $film->title,
         description => $film->overview,
         genre       => $film->genre,
         year        => $film->year,
@@ -88,7 +88,10 @@ sub apply_meta {
     );
 
     say 'writing tags' if $self->{verbose};
-    return $self->_write_tags( $path, $apTags );
+    my $error = $self->_write_tags( $path, $apTags );
+    return $error if $error;
+
+    return $self->_add_to_itunes( File::Spec->rel2abs($path) );
 }
 
 # Parse the filename in order to get the film title. Returns the title.
@@ -126,7 +129,7 @@ App::MP4Meta::Film - Add metadata to a film
 
 =head1 VERSION
 
-version 1.130020
+version 1.130100
 
 =head1 SYNOPSIS
 

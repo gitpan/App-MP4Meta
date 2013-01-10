@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Command::film;
 {
-  $App::MP4Meta::Command::film::VERSION = '1.130020';
+  $App::MP4Meta::Command::film::VERSION = '1.130100';
 }
 
 # ABSTRACT: Apply metadata to a film. Parses the filename in order to get the films title and (optionally) year.
@@ -22,12 +22,13 @@ sub abstract {
 
 sub opt_spec {
     return (
-        [ "genre=s",     "The genre of the TV Show" ],
+        [ "genre=s",     "The genre of the Film" ],
         [ "coverfile=s", "The location of the cover image" ],
         [ "sources=s@", "The sources to search", { default => [qw/IMDB/] } ],
         [ "title=s",    "The title of the Film" ],
         [ "noreplace", "Don't replace the file - creates a temp file instead" ],
-        [ "verbose",   "Print verbosely" ],
+        [ "itunes",  "adds to iTunes after applying meta data. Mac OSX only." ],
+        [ "verbose", "Print verbosely" ],
         [
             "withoutany",
 "Continue to process even if we can not find any information on the internet"
@@ -65,6 +66,7 @@ sub execute {
             sources              => $opt->{sources},
             title                => $opt->{title},
             coverfile            => $opt->{coverfile},
+            itunes               => $opt->{itunes},
             verbose              => $opt->{verbose},
             continue_without_any => $opt->{withoutany},
         }
@@ -98,7 +100,7 @@ App::MP4Meta::Command::film - Apply metadata to a film. Parses the filename in o
 
 =head1 VERSION
 
-version 1.130020
+version 1.130100
 
 =head1 SYNOPSIS
 

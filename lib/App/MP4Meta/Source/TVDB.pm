@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Source::TVDB;
 {
-  $App::MP4Meta::Source::TVDB::VERSION = '1.130020';
+  $App::MP4Meta::Source::TVDB::VERSION = '1.130100';
 }
 
 # ABSTRACT: Searches http://thetvbd.com for TV data.
@@ -119,7 +119,7 @@ App::MP4Meta::Source::TVDB - Searches http://thetvbd.com for TV data.
 
 =head1 VERSION
 
-version 1.130020
+version 1.130100
 
 =head1 METHODS
 
