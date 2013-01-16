@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Source::Data::TVEpisode;
 {
-  $App::MP4Meta::Source::Data::TVEpisode::VERSION = '1.130100';
+  $App::MP4Meta::Source::Data::TVEpisode::VERSION = '1.130160';
 }
 
 # ABSTRACT: Contains data for a TV Episode.
@@ -28,7 +28,7 @@ App::MP4Meta::Source::Data::TVEpisode - Contains data for a TV Episode.
 
 =head1 VERSION
 
-version 1.130100
+version 1.130160
 
 =head1 SYNOPSIS
 

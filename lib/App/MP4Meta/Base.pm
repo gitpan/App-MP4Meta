@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Base;
 {
-  $App::MP4Meta::Base::VERSION = '1.130100';
+  $App::MP4Meta::Base::VERSION = '1.130160';
 }
 
 # ABSTRACT: Base class. Contains common functionality.
@@ -17,6 +17,10 @@ sub new {
     my $class = shift;
     my $args  = shift;
     my $self  = {};
+
+    # file suffixes we support
+    my @suffixes = qw/mp4 m4a m4p m4v m4b/;
+    $self->{suffixes} = \@suffixes;
 
     # the path to AtomicParsley
     $self->{'ap'} = AtomicParsley::Command->new( { ap => $args->{'ap'} } );
@@ -70,6 +74,15 @@ sub _write_tags {
     }
 
     return;
+}
+
+sub _strip_suffix {
+    my ( $self, $file ) = @_;
+
+    my $regex = sprintf( '\.(%s)$', join( '|', @{ $self->{suffixes} } ) );
+    $file =~ s/$regex//;
+
+    return $file;
 }
 
 # Converts 'THE_OFFICE' to 'The Office'
@@ -133,7 +146,7 @@ App::MP4Meta::Base - Base class. Contains common functionality.
 
 =head1 VERSION
 
-version 1.130100
+version 1.130160
 
 =head1 SYNOPSIS
 

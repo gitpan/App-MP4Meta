@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Film;
 {
-  $App::MP4Meta::Film::VERSION = '1.130100';
+  $App::MP4Meta::Film::VERSION = '1.130160';
 }
 
 # ABSTRACT: Add metadata to a film
@@ -99,7 +99,7 @@ sub _parse_filename {
     my ( $self, $file ) = @_;
 
     # strip suffix
-    $file =~ s/\.m4v$//;
+    $file = $self->_strip_suffix($file);
 
     # is there a year?
     my $year;
@@ -129,7 +129,7 @@ App::MP4Meta::Film - Add metadata to a film
 
 =head1 VERSION
 
-version 1.130100
+version 1.130160
 
 =head1 SYNOPSIS
 

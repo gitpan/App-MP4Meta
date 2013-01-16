@@ -1,5 +1,5 @@
 ---
-abstract: 'Apply iTunes-like metadata to an mp4 file.'
+abstract: "Apply iTunes-like metadata to an mp4 file.\r"
 author:
   - 'Andrew Jones <andrew@arjones.co.uk>'
 build_requires:
@@ -18,7 +18,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640'
+generated_by: 'Dist::Zilla version 4.300009, CPAN::Meta::Converter version 2.113640'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -44,4 +44,4 @@ resources:
   bugtracker: https://github.com/andrewrjones/perl5-App-MP4Meta/issues
   homepage: https://github.com/andrewrjones/perl5-App-MP4Meta
   repository: https://github.com/andrewrjones/perl5-App-MP4Meta.git
-version: 1.130100
+version: 1.130160
