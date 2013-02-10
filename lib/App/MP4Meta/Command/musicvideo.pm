@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Command::musicvideo;
 {
-  $App::MP4Meta::Command::musicvideo::VERSION = '1.130160';
+  $App::MP4Meta::Command::musicvideo::VERSION = '1.130410';
 }
 
 # ABSTRACT: Apply metadata to a music video. Parses the filename in order to get its artist and title.
@@ -93,7 +93,7 @@ App::MP4Meta::Command::musicvideo - Apply metadata to a music video. Parses the 
 
 =head1 VERSION
 
-version 1.130160
+version 1.130410
 
 =head1 SYNOPSIS
 

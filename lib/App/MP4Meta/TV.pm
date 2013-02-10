@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::TV;
 {
-  $App::MP4Meta::TV::VERSION = '1.130160';
+  $App::MP4Meta::TV::VERSION = '1.130410';
 }
 
 # ABSTRACT: Add metadata to a TV Series
@@ -122,6 +122,7 @@ sub apply_meta {
         TVSeasonNum  => $tags{season},
         stik         => $self->{'media_type'},
         description  => $episode->overview,
+        longdesc     => $episode->overview,
         genre        => $episode->genre,
         year         => $episode->year,
         artwork      => $episode->cover
@@ -180,7 +181,7 @@ App::MP4Meta::TV - Add metadata to a TV Series
 
 =head1 VERSION
 
-version 1.130160
+version 1.130410
 
 =head1 SYNOPSIS
 

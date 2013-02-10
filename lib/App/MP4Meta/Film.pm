@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Film;
 {
-  $App::MP4Meta::Film::VERSION = '1.130160';
+  $App::MP4Meta::Film::VERSION = '1.130410';
 }
 
 # ABSTRACT: Add metadata to a film
@@ -81,6 +81,7 @@ sub apply_meta {
     my $apTags = AtomicParsley::Command::Tags->new(
         title       => $film->title,
         description => $film->overview,
+        longdesc    => $film->overview,
         genre       => $film->genre,
         year        => $film->year,
         artwork     => $film->cover,
@@ -129,7 +130,7 @@ App::MP4Meta::Film - Add metadata to a film
 
 =head1 VERSION
 
-version 1.130160
+version 1.130410
 
 =head1 SYNOPSIS
 

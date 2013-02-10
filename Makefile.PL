@@ -9,11 +9,10 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Apply iTunes-like metadata to an mp4 file.\r",
+  "ABSTRACT" => "Apply iTunes-like metadata to an mp4 file.",
   "AUTHOR" => "Andrew Jones <andrew\@arjones.co.uk>",
   "BUILD_REQUIRES" => {
     "App::Cmd::Tester" => 0,
-    "English" => 0,
     "File::Copy" => 0,
     "File::Find" => 0,
     "FindBin" => 0,
@@ -21,7 +20,7 @@ my %WriteMakefileArgs = (
     "Test::Class" => 0,
     "Test::Exception" => 0,
     "Test::MockObject" => 0,
-    "Test::More" => "0.88",
+    "Test::More" => 0,
     "WebService::TVDB::Series" => 0,
     "base" => 0
   },
@@ -50,7 +49,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "1.130160",
+  "VERSION" => "1.130410",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Command::tv;
 {
-  $App::MP4Meta::Command::tv::VERSION = '1.130160';
+  $App::MP4Meta::Command::tv::VERSION = '1.130410';
 }
 
 # ABSTRACT: Apply metadata to a TV Series. Parses the filename in order to get the shows title and its season and episode number.
@@ -106,7 +106,7 @@ App::MP4Meta::Command::tv - Apply metadata to a TV Series. Parses the filename i
 
 =head1 VERSION
 
-version 1.130160
+version 1.130410
 
 =head1 SYNOPSIS
 

@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Source::Data::Film;
 {
-  $App::MP4Meta::Source::Data::Film::VERSION = '1.130160';
+  $App::MP4Meta::Source::Data::Film::VERSION = '1.130410';
 }
 
 # ABSTRACT: Contains data for a film.
@@ -24,7 +24,7 @@ App::MP4Meta::Source::Data::Film - Contains data for a film.
 
 =head1 VERSION
 
-version 1.130160
+version 1.130410
 
 =head1 SYNOPSIS
 

@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta;
 {
-  $App::MP4Meta::VERSION = '1.130160';
+  $App::MP4Meta::VERSION = '1.130410';
 }
 
 # ABSTRACT: Apply iTunes-like metadata to an mp4 file.
@@ -23,7 +23,7 @@ App::MP4Meta - Apply iTunes-like metadata to an mp4 file.
 
 =head1 VERSION
 
-version 1.130160
+version 1.130410
 
 =head1 DESCRIPTION
 
