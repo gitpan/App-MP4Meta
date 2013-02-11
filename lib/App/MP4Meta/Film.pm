@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Film;
 {
-  $App::MP4Meta::Film::VERSION = '1.130410';
+  $App::MP4Meta::Film::VERSION = '1.130420';
 }
 
 # ABSTRACT: Add metadata to a film
@@ -23,7 +23,9 @@ sub new {
 
     my $self = $class->SUPER::new($args);
 
-    $self->{'media_type'} = 'Movie';
+    # Of course, its a movie, but this fixes the
+    # 'Home Video' problem in iTunes 11.
+    $self->{'media_type'} = 'Short Film';
 
     return $self;
 }
@@ -130,7 +132,7 @@ App::MP4Meta::Film - Add metadata to a film
 
 =head1 VERSION
 
-version 1.130410
+version 1.130420
 
 =head1 SYNOPSIS
 

@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Base;
 {
-  $App::MP4Meta::Base::VERSION = '1.130410';
+  $App::MP4Meta::Base::VERSION = '1.130420';
 }
 
 # ABSTRACT: Base class. Contains common functionality.
@@ -146,7 +146,7 @@ App::MP4Meta::Base - Base class. Contains common functionality.
 
 =head1 VERSION
 
-version 1.130410
+version 1.130420
 
 =head1 SYNOPSIS
 

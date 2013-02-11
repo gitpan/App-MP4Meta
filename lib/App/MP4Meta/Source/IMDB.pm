@@ -4,7 +4,7 @@ use warnings;
 
 package App::MP4Meta::Source::IMDB;
 {
-  $App::MP4Meta::Source::IMDB::VERSION = '1.130410';
+  $App::MP4Meta::Source::IMDB::VERSION = '1.130420';
 }
 
 # ABSTRACT: Fetches film data from the IMDB.
@@ -93,7 +93,7 @@ App::MP4Meta::Source::IMDB - Fetches film data from the IMDB.
 
 =head1 VERSION
 
-version 1.130410
+version 1.130420
 
 =head1 METHODS
 
